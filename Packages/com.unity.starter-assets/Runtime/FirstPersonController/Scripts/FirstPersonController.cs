@@ -69,7 +69,7 @@ namespace StarterAssets
 		private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		public StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -115,12 +115,22 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Shoot();
 		}
 
 		private void LateUpdate()
 		{
 			CameraRotation();
 		}
+
+		private void Shoot()
+		{
+            if (_input.shoot)
+            {
+				Debug.Log("Shoot");
+				_input.shoot = false;
+            }
+        }
 
 		private void GroundedCheck()
 		{
